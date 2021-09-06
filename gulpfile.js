@@ -14,13 +14,14 @@ let path = {
         css: sourceFolder + '/less/common.less',
         js: sourceFolder + '/js/script.js',
         img: sourceFolder + '/images/**/*.{jpg, png, svg, gif, ico, webp}',
-        fonts: sourceFolder + '/fonts/*.ttf'
+        fonts: sourceFolder + '/fonts/**/*.ttf'
     },
     watch: {
         html: sourceFolder+'/**/*.html',
         css: sourceFolder + '/less/**/*.less',
         js: sourceFolder + '/js/**/*.js',
-        img: sourceFolder + '/images/**/*.{jpg, png, svg, gif, ico, webp}'
+        img: sourceFolder + '/images/**/*.{jpg, png, svg, gif, ico, webp}',
+        fonts: sourceFolder + '/fonts/**/*.ttf'
     },
     clean: './' + projectFolder + '/'
 }
@@ -31,7 +32,9 @@ let { src, dest } = require('gulp'),
     fileInclude = require('gulp-file-include'),
     del = require('del'),
     less = require('gulp-less'),
-    autoprefixer = require('gulp-autoprefixer')
+    autoprefixer = require('gulp-autoprefixer'),
+    ttf2woff = require('gulp-ttf2woff'),
+    ttf2woff2 = require('gulp-ttf2woff2')
 
 function browser(params) {
     browserSync.init({
@@ -50,6 +53,12 @@ function html() {
         .pipe(browserSync.stream())
 }
 
+function fonts() {
+    return src(path.src.fonts)
+        .pipe(dest(path.build.fonts))
+        .pipe(browserSync.stream())
+}
+
 function css() {
     return src(path.src.css)
         .pipe(less())
@@ -65,12 +74,6 @@ function js() {
         .pipe(browserSync.stream())
 }
 
-function fonts() {
-    return src(path.src.fonts)
-        .pipe(dest(path.build.fonts))
-        .pipe(browserSync.stream())
-}
-
 function watchFiles() {
     gulp.watch([path.watch.html], html)
     gulp.watch([path.watch.css], css)
@@ -81,13 +84,13 @@ function clean(params) {
     return del(path.clean)
 }
 
-let build = gulp.series(clean,  gulp.parallel(js, html, css, fonts))
+let build = gulp.series(clean,  gulp.parallel(fonts, js, html, css))
 let watch = gulp.parallel(build, browser, watchFiles);
 
-exports.css = css
 exports.fonts = fonts
 exports.js = js
+exports.css = css
 exports.html = html
-exports.watch = watch
 exports.build = build
+exports.watch = watch
 exports.default = watch

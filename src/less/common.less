@@ -20,6 +20,11 @@
   font-display: swap;
 }
 
+@import "navbar";
+@import "header";
+@import "questions";
+@import "discussion";
+
 * {
   margin: 0;
   padding: 0;
@@ -28,9 +33,55 @@
   text-decoration: none;
 }
 body {
-  font-family: 'TTCommons';
-  & h1 {
-    font-family: 'Quiza Pro';
-    font-weight: 500;
+  font-family: sans-serif;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+.wrapper {
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  height: 100%;
+
+  @media only screen and (min-width: 767px) {
+    width: calc(100% - 60px);
+  }
+  @media only screen and (min-width: 1280px) {
+    max-width: 1160px;
+    width: 100%;
+  }
+}
+.section {
+  width: 100%;
+  margin: 50px 0;
+  display: inline-block;
+}
+.section-title {
+  font-family: 'TT Commons', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #8C3848;
+  margin-bottom: 10px;
+}
+.burger {
+  width: 20px;
+  height: 20px;
+
+  @media only screen and (min-width: 1280px) {
+    display: none;
+  }
+
+  &__top-line {
+    width: 19px;
+    height: 2.5px;
+    background-color: #BABABA;
+    margin-top: 3px;
+    margin-bottom: 5.6px;
+  }
+  &__bottom-line {
+    width: 13px;
+    height: 2.4px;
+    background-color: #BABABA;
   }
 }
