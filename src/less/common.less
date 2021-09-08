@@ -24,6 +24,10 @@
 @import "header";
 @import "questions";
 @import "discussion";
+@import "community";
+@import "something-else";
+@import "quiz";
+@import "footer";
 
 * {
   margin: 0;
@@ -64,10 +68,35 @@ body {
   color: #8C3848;
   margin-bottom: 10px;
 }
+.container {
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  height: 100%;
+
+  @media only screen and (min-width: 767px) {
+    width: calc(100% - 60px);
+  }
+  @media only screen and (min-width: 1280px) {
+    max-width: 1090px;
+    width: 100%;
+  }
+}
 .burger {
   width: 20px;
   height: 20px;
 
+  &_active {
+    .burger__top-line {
+      width: 19px;
+      height: 2.5px;
+      transform: rotate(-45deg) translate(-1px, 4px);
+    }
+    .burger__bottom-line {
+      width: 19px;
+      height: 2.5px;
+      transform: rotate(45deg) translate(-2px, -4px);
+    }
+  }
   @media only screen and (min-width: 1280px) {
     display: none;
   }
@@ -78,10 +107,12 @@ body {
     background-color: #BABABA;
     margin-top: 3px;
     margin-bottom: 5.6px;
+    transition: all .5s ease;
   }
   &__bottom-line {
     width: 13px;
     height: 2.4px;
     background-color: #BABABA;
+    transition: all .5s ease;
   }
 }

@@ -1,0 +1,145 @@
+// main: common.less
+
+.navbar {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background-color: #fff;
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 100;
+  }
+  &__item {
+    z-index: 100;
+    &_logo {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+
+      @media only screen and (min-width: 1280px) {
+        transform: translateY(-50%);
+        left: 0;
+        top: 50%;
+      }
+    }
+    &_sign-up {
+      display: flex;
+      align-items: center;
+    }
+    &_desktop {
+      position: absolute;
+      left: 0;
+      top: 60px;
+      width: 100%;
+      height: calc(100vh - 60px);
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      background-color: #fff;
+      z-index: 99;
+      padding-top: 30px;
+      transform: translateX(calc(-100% - 40px));
+      transition: all .5s ease;
+
+      @media only screen and (min-width: 1280px) {
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        width: auto;
+        height: auto;
+        flex-direction: row;
+        padding-top: 0;
+      }
+    }
+    &_active {
+      transform: translateX(0%);
+    }
+  }
+  &__line {
+    height: 40px;
+    width: 1px;
+    background-color: #898989;
+    border-radius: 100px;
+    margin-right: 20px;
+  }
+  &__logo-icon {
+    width: 85px;
+  }
+  &__link {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28px;
+    color: #555555;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    &_desktop {
+      margin-bottom: 10px;
+      width: 100%;
+      padding-bottom: 10px;
+      position: relative;
+
+      &:last-child:after {
+        display: none;
+      }
+      &:after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: #D8D8D8;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: block;
+      }
+
+      @media only screen and (min-width: 1280px) {
+        margin: 0 40px 0 0;
+        padding: 0;
+
+        &:last-child {
+          margin: 0;
+        }
+        &:after {
+          display: none;
+        }
+      }
+    }
+    &_box {
+      display: none;
+
+      @media only screen and (min-width: 767px) {
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+        background-color: #F7F4F0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  &__box-image {
+    display: none;
+
+    @media only screen and (min-width: 767px) {
+      display: block;
+      width: 22px;
+      height: 22px;
+    }
+  }
+}

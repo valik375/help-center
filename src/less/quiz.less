@@ -1,0 +1,32 @@
+//main: common.less
+
+.quiz {
+  &__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  &__title {
+    margin-bottom: 20px !important;
+  }
+  &__button {
+    cursor: pointer;
+    padding: 10.5px 20px 6.5px 20px;
+    background: #FC654C;
+    border-radius: 10px;
+    border: 2px solid #FC654C;
+    transition: all .3s ease;
+    color: #fff;
+    font-family: 'TT Commons', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+
+    &:hover {
+      background-color: transparent;
+      color: #FC654C;
+    }
+  }
+}
