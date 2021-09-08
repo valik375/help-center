@@ -12,6 +12,7 @@ new Swiper('.swiper', {
     breakpoints: {
         1280: {
             spaceBetween: 20,
+            grabCursor: true,
         }
     }
 })
@@ -52,9 +53,10 @@ function mobileMenu() {
     })
 }
 
-mobileMenu()
+
 window.onload = () => {
-    if (window.innerWidth < 480) {
+    if (window.innerWidth < 760) {
         footerDropDown()
     }
+    mobileMenu()
 }
